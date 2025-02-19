@@ -1,0 +1,464 @@
+﻿@page
+@model Inventory.Areas.Identity.Pages.Admin.DashboardModel
+@{
+    ViewData["Title"] = "Admin Dashboard";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<link rel="stylesheet" href="~/css/dashboard.css" asp-append-version="true" />
+
+
+<!-- Search Bar -->
+<form method="post" class="d-flex justify-content-center mb-3" id="search-form">
+    <div class="form-group d-flex align-items-center">
+        <input type="text" asp-for="SearchQuery" class="form-control search-bar" placeholder="Ask me anything..." />
+        <button type="submit" class="btn btn-primary search-btn">
+            <i class="bi bi-search"></i>
+        </button>
+        <!-- Loading Indicator -->
+        <div id="loading-indicator" class="ms-2">
+            <div class="dot-flashing"></div>
+        </div>
+    </div>
+</form>
+
+
+
+
+
+@if (Model.GptApiResponse != null)
+{
+    <!-- Bootstrap Modal -->
+    <div class="modal fade" id="gptResponseModal" tabindex="-1" aria-labelledby="gptResponseModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="gptResponseModalLabel">GPT Response</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" style="max-height: 400px; overflow-y: auto;">
+                    <pre id="typing-text" style="white-space: pre-wrap; word-wrap: break-word;"></pre>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Function to decode HTML entities
+            function decodeHtml(html) {
+                var txt = document.createElement("textarea");
+                txt.innerHTML = html;
+                return txt.value;
+            }
+
+            // Show and hide loading indicator
+            function showLoadingIndicator() {
+                document.getElementById('loading-indicator').style.display = 'flex';
+            }
+
+            function hideLoadingIndicator() {
+                document.getElementById('loading-indicator').style.display = 'none';
+            }
+
+            // Show modal and typewriter effect if there's a response
+            if ("@Model.GptApiResponse") {
+                var text = decodeHtml("@Model.GptApiResponse");
+                var index = 0;
+                var speed = 50; // Adjust typing speed here (milliseconds per character)
+                var typingTextElement = document.getElementById("typing-text");
+
+                var gptResponseModal = new bootstrap.Modal(document.getElementById('gptResponseModal'));
+                gptResponseModal.show();
+
+                function typeWriter() {
+                    if (index < text.length) {
+                        typingTextElement.textContent += text.charAt(index);
+                        index++;
+                        setTimeout(typeWriter, speed);
+                    } else {
+                        hideLoadingIndicator();
+                    }
+                }
+
+                typeWriter();
+            }
+
+            // Event listener for form submission
+            document.getElementById('search-form').addEventListener('submit', function (event) {
+                showLoadingIndicator();
+
+                // Add a delay to simulate waiting for the response
+                setTimeout(function () {
+                    // Ensure loading indicator is hidden if response is already processed
+                    if (document.getElementById('typing-text').textContent) {
+                        hideLoadingIndicator();
+                    }
+                }, 3000); // Adjust as needed to simulate response time
+            });
+        });
+
+
+
+
+    </script>
+}
+
+
+
+
+
+
+<!-- Dashboard Statistics -->
+<div class="row">
+    <div class="col-md-6 mb-4">
+        <div class="card text-white bg-primary">
+            <div class="card-body">
+                <h5 class="card-title">Active Users</h5>
+                <p class="card-text">@Model.ActiveUsersCount</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 mb-4">
+        <div class="card text-white bg-warning">
+            <div class="card-body">
+                <h5 class="card-title">Low Stock Products</h5>
+                <p class="card-text">@Model.LowStockProductsCount</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6 mb-4">
+        <div class="card text-white bg-success">
+            <div class="card-body">
+                <h5 class="card-title">Suppliers</h5>
+                <p class="card-text">@Model.SuppliersCount</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 mb-4">
+        <div class="card text-white bg-info">
+            <div class="card-body">
+                <h5 class="card-title">Month Orders</h5>
+                <p class="card-text">@Model.MonthlyOrdersCount</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Graphs Section -->
+<div class="row mb-4">
+    <div class="col-md-12 mb-4">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Orders by Status</h5>
+                <div class="chart-container">
+                    <canvas id="ordersByStatusChart"></canvas>
+                </div>
+                <div class="chart-popup" id="ordersByStatusPopup">
+                    <canvas id="ordersByStatusPopupChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-4 mb-4">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Products by Supplier</h5>
+                <div class="chart-container">
+                    <canvas id="productsBySupplierChart"></canvas>
+                </div>
+                <div class="chart-popup" id="productsBySupplierPopup">
+                    <canvas id="productsBySupplierPopupChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4 mb-4">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Products by Category</h5>
+                <div class="chart-container">
+                    <canvas id="productsByCategoryChart"></canvas>
+                </div>
+                <div class="chart-popup" id="productsByCategoryPopup">
+                    <canvas id="productsByCategoryPopupChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4 mb-4">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Product Status</h5>
+                <div class="chart-container">
+                    <canvas id="productStatusPieChart"></canvas>
+                </div>
+                <div class="chart-popup" id="productStatusPiePopup">
+                    <canvas id="productStatusPiePopupChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Overlay for pop-up -->
+<div id="overlay" class="overlay"></div>
+
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        function createCharts() {
+            function showOverlay() {
+                document.getElementById('overlay').style.display = 'block';
+            }
+
+            function hideOverlay() {
+                document.getElementById('overlay').style.display = 'none';
+            }
+
+            // Data from the server-side model
+            var ordersByStatusData = @Html.Raw(Json.Serialize(Model.OrdersByStatus));
+            var productsBySupplierData = @Html.Raw(Json.Serialize(Model.ProductsBySupplier));
+            var productsByCategoryData = @Html.Raw(Json.Serialize(Model.ProductsByCategory));
+            var productStatusData = @Html.Raw(Json.Serialize(Model.ProductStatus));
+
+            // Orders by Status Chart
+            var ctx1 = document.getElementById('ordersByStatusChart').getContext('2d');
+            var ordersByStatusChart = new Chart(ctx1, {
+                type: 'bar',
+                data: {
+                    labels: ordersByStatusData.map(data => data.status),
+                    datasets: [{
+                        label: 'Orders Status',
+                        data: ordersByStatusData.map(data => data.count),
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.8)',
+                            'rgba(54, 162, 235, 0.8)',
+                            'rgba(255, 206, 86, 0.8)',
+                            'rgba(75, 192, 192, 0.8)',
+                            'rgba(153, 102, 255, 0.8)',
+                            'rgba(255, 159, 64, 0.8)'
+                        ],
+                        borderColor: [
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 206, 86, 1)',
+                            'rgba(75, 192, 192, 1)',
+                            'rgba(153, 102, 255, 1)',
+                            'rgba(255, 159, 64, 1)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: { beginAtZero: true }
+                    },
+                    onClick: function (event, elements) {
+                        if (elements.length > 0) {
+                            showOverlay();
+                            var chart = this;
+                            var popup = document.getElementById('ordersByStatusPopup');
+                            popup.style.display = 'block';
+                            var popupCtx = popup.querySelector('#ordersByStatusPopupChart').getContext('2d');
+                            var popupChart = new Chart(popupCtx, {
+                                type: 'bar',
+                                data: {
+                                    labels: chart.data.labels,
+                                    datasets: [{
+                                        label: chart.data.datasets[0].label,
+                                        data: chart.data.datasets[0].data,
+                                        backgroundColor: chart.data.datasets[0].backgroundColor,
+                                        borderColor: chart.data.datasets[0].borderColor,
+                                        borderWidth: 1
+                                    }]
+                                },
+                                options: {
+                                    responsive: true,
+                                    maintainAspectRatio: false,
+                                    scales: {
+                                        y: { beginAtZero: true }
+                                    }
+                                }
+                            });
+                            popup.addEventListener('click', function () {
+                                popup.style.display = 'none';
+                                hideOverlay();
+                            });
+                        }
+                    }
+                }
+            });
+
+            // Products by Supplier Chart
+            var ctx2 = document.getElementById('productsBySupplierChart').getContext('2d');
+            var productsBySupplierChart = new Chart(ctx2, {
+                type: 'bar',
+                data: {
+                    labels: productsBySupplierData.map(data => data.supplierName),
+                    datasets: [{
+                        label: 'Number of Products',
+                        data: productsBySupplierData.map(data => data.productCount),
+                        backgroundColor: 'rgba(54, 162, 235, 0.8)',
+                        borderColor: 'rgba(54, 162, 235, 1)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: { beginAtZero: true }
+                    },
+                    onClick: function (event, elements) {
+                        if (elements.length > 0) {
+                            showOverlay();
+                            var chart = this;
+                            var popup = document.getElementById('productsBySupplierPopup');
+                            popup.style.display = 'block';
+                            var popupCtx = popup.querySelector('#productsBySupplierPopupChart').getContext('2d');
+                            var popupChart = new Chart(popupCtx, {
+                                type: 'bar',
+                                data: chart.data,
+                                options: {
+                                    responsive: true,
+                                    maintainAspectRatio: false,
+                                    scales: {
+                                        y: { beginAtZero: true }
+                                    }
+                                }
+                            });
+                            popup.addEventListener('click', function () {
+                                popup.style.display = 'none';
+                                hideOverlay();
+                            });
+                        }
+                    }
+                }
+            });
+
+            // Products by Category Chart
+            var ctx3 = document.getElementById('productsByCategoryChart').getContext('2d');
+            var productsByCategoryChart = new Chart(ctx3, {
+                type: 'line',
+                data: {
+                    labels: productsByCategoryData.map(data => data.categoryName),
+                    datasets: [{
+                        label: 'Number of Products',
+                        data: productsByCategoryData.map(data => data.productCount),
+                        backgroundColor: 'rgba(75, 192, 192, 0.8)',
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: { beginAtZero: true }
+                    },
+                    onClick: function (event, elements) {
+                        if (elements.length > 0) {
+                            showOverlay();
+                            var chart = this;
+                            var popup = document.getElementById('productsByCategoryPopup');
+                            popup.style.display = 'block';
+                            var popupCtx = popup.querySelector('#productsByCategoryPopupChart').getContext('2d');
+                            var popupChart = new Chart(popupCtx, {
+                                type: 'bar',
+                                data: chart.data,
+                                options: {
+                                    responsive: true,
+                                    maintainAspectRatio: false,
+                                    scales: {
+                                        y: { beginAtZero: true }
+                                    }
+                                }
+                            });
+                            popup.addEventListener('click', function () {
+                                popup.style.display = 'none';
+                                hideOverlay();
+                            });
+                        }
+                    }
+                }
+            });
+
+            // Product Status Pie Chart
+            var ctx4 = document.getElementById('productStatusPieChart').getContext('2d');
+            var productStatusPieChart = new Chart(ctx4, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Available', 'Low Stock', 'Outof Stock'],
+                    datasets: [{
+                        label: 'Product Status',
+                        data: [
+                            productStatusData.available,
+                            productStatusData.lowStock,
+                            productStatusData.outOfStock
+                        ],
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.8)',
+                            'rgba(54, 162, 235, 0.8)',
+                            'rgba(255, 206, 86, 0.8)'
+                        ],
+                        borderColor: [
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 206, 86, 0.8)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    onClick: function (event, elements) {
+                        if (elements.length > 0) {
+                            showOverlay();
+                            var chart = this;
+                            var popup = document.getElementById('productStatusPiePopup');
+                            popup.style.display = 'block';
+                            var popupCtx = popup.querySelector('#productStatusPiePopupChart').getContext('2d');
+                            var popupChart = new Chart(popupCtx, {
+                                type: 'doughnut',
+                                data: chart.data,
+                                options: {
+                                    responsive: true,
+                                    maintainAspectRatio: false
+                                }
+                            });
+                            popup.addEventListener('click', function () {
+                                popup.style.display = 'none';
+                                hideOverlay();
+                            });
+                        }
+                    }
+                }
+            });
+
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            createCharts();
+        });
+    </script>
+}
+
+
+
+
