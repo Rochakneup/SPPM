@@ -1,0 +1,62 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+	  <UserSecretsId>your-unique-user-secrets-id</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="wwwroot\assets - Copy\**" />
+    <Content Remove="wwwroot\assets - Copy\**" />
+    <EmbeddedResource Remove="wwwroot\assets - Copy\**" />
+    <None Remove="wwwroot\assets - Copy\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="Views\Shared\_Layout - Copy.cshtml" />
+    <Content Remove="Views\Shared\_ManageNav.cshtml" />
+    <Content Remove="wwwroot\assets\background.jpg" />
+    <Content Remove="wwwroot\assets\bg.jpg" />
+    <Content Remove="wwwroot\assets\bg.png" />
+    <Content Remove="wwwroot\assets\chart.png" />
+    <Content Remove="wwwroot\assets\google.jpg" />
+    <Content Remove="wwwroot\assets\Image 5.jpg" />
+    <Content Remove="wwwroot\assets\Image 5.png" />
+    <Content Remove="wwwroot\assets\inven1.jfif" />
+    <Content Remove="wwwroot\assets\log.jpg" />
+    <Content Remove="wwwroot\assets\loginbg.jpg" />
+    <Content Remove="wwwroot\css\product_create.cs" />
+    <Content Remove="wwwroot\css\user_edit.css" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Views\Shared\_Layout - Copy.cshtml.css" />
+    <None Remove="Views\Shared\_ManageNav.cshtml.css" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="wwwroot\css\dashboard.css" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.Google" Version="8.0.6" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.4" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="8.0.4" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="8.0.4" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.4" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.4">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.2" />
+    <PackageReference Include="OpenAI" Version="1.11.0" />
+    <PackageReference Include="Polly" Version="8.4.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Migrations\" />
+  </ItemGroup>
+
+</Project>
