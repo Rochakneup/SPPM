@@ -1,0 +1,190 @@
+﻿@model Inventory.Models.Order
+
+@{
+    ViewData["Title"] = "Order Details";
+}
+
+<h1>Order Details</h1>
+
+<div class="table-container">
+    <h2>Order Information</h2>
+    <table class="table table-bordered">
+        <tbody>
+            <tr>
+                <th>Order ID</th>
+                <td>@Model.Id</td>
+            </tr>
+            <tr>
+                <th>Order Date</th>
+                <td>@Model.OrderDate.ToString("d")</td>
+            </tr>
+            <tr>
+                <th>Status</th>
+                <td class="status-cell">
+                    @if (Model.Status == Inventory.Models.OrderStatus.Pending)
+                    {
+                        <span class="badge bg-warning text-dark">
+                            <i class="bi bi-clock"></i> Pending
+                        </span>
+                    }
+                    else if (Model.Status == Inventory.Models.OrderStatus.Completed)
+                    {
+                        <span class="badge bg-success">
+                            <i class="bi bi-check-circle"></i> Completed
+                        </span>
+                    }
+                    else if (Model.Status == Inventory.Models.OrderStatus.Cancelled)
+                    {
+                        <span class="badge bg-danger">
+                            <i class="bi bi-x-circle"></i> Cancelled
+                        </span>
+                    }
+                    else if (Model.Status == Inventory.Models.OrderStatus.InProgress)
+                    {
+                        <span class="badge bg-info text-dark">
+                            <i class="bi bi-arrow-right-circle"></i> In Progress
+                        </span>
+                    }
+                    else
+                    {
+                        <span class="badge bg-secondary">
+                            <i class="bi bi-truck"></i> Shipped
+                        </span>
+                    }
+                </td>
+            </tr>
+            <tr>
+                <th>User First Name</th>
+                <td>@Model.UserFirstName</td>
+            </tr>
+            <tr>
+                <th>User Email</th>
+                <td>@Model.UserEmail</td>
+            </tr>
+            <tr>
+                <th>Delivery Date</th>
+                <td>@Model.DeliveryDate?.ToString("d")</td>
+            </tr>
+            <tr>
+                <th>Delivery Address</th>
+                <td>@Model.DeliveryAddress</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="table-container">
+    <h2>Order Items</h2>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Product Image</th>
+                <th>Product Name</th>
+                <th>Quantity</th>
+                <th>Unit Price</th>
+                <th>Total Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.OrderItems)
+            {
+                <tr>
+                    <td>
+                        @if (!string.IsNullOrEmpty(item.Product.ImageUrl))
+                        {
+                            <img src="@item.Product.ImageUrl" alt="Product Image" class="img-thumbnail" style="max-height: 100px;" />
+                        }
+                        else
+                        {
+                            <span>No Image</span>
+                        }
+                    </td>
+                    <td>@item.Product.Name</td>
+                    <td>@item.Quantity</td>
+                    <td>Rs. @item.UnitPrice</td>
+                    <td>Rs. @(item.Quantity * item.UnitPrice)</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<a asp-action="Index" class="custom-link">Back</a>
+
+<style>
+    h1 {
+        margin-top: 80px;
+        text-align: center;
+    }
+
+    .table-container {
+        position: relative;
+        max-width: 800px;
+        margin: 20px auto; /* Add margin to prevent overlap */
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .table th, .table td {
+        vertical-align: middle;
+        text-align: center;
+    }
+
+    .status-cell {
+        text-align: center;
+        white-space: nowrap;
+    }
+
+    .custom-link {
+        display: block;
+        text-align: end;
+        margin-top: 20px;
+        color: #0E9BA8;
+        text-decoration: none;
+    }
+
+        .custom-link:hover {
+            color: #0C8B97;
+            text-decoration: underline;
+        }
+
+    .badge {
+        font-size: 0.85em;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+        .badge i {
+            font-size: 1em;
+        }
+
+        .badge.bg-warning {
+            background-color: #ffc107 !important;
+            color: #212529 !important;
+        }
+
+        .badge.bg-info {
+            background-color: #17a2b8 !important;
+            color: #fff !important;
+        }
+
+        .badge.bg-success {
+            background-color: #28a745 !important;
+            color: #fff !important;
+        }
+
+        .badge.bg-danger {
+            background-color: #dc3545 !important;
+            color: #fff !important;
+        }
+
+        .badge.bg-secondary {
+            background-color: #6c757d !important;
+            color: #fff !important;
+        }
+</style>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
