@@ -60,4 +60,9 @@
     <Folder Include="Migrations\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Include="Views\Categories\Create.cshtml" />
+    <None Include="Views\Categories\Index.cshtml" />
+  </ItemGroup>
+
 </Project>
