@@ -1,0 +1,157 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Dell\\Desktop\\Inventory-copy\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{5AEAEB71-D0B0-45B9-BCBB-6F32140D64EF}|Inventory\\Inventory.csproj|c:\\users\\dell\\desktop\\inventory-copy\\inventory\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{5AEAEB71-D0B0-45B9-BCBB-6F32140D64EF}|Inventory\\Inventory.csproj|solutionrelative:inventory\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5AEAEB71-D0B0-45B9-BCBB-6F32140D64EF}|Inventory\\Inventory.csproj|c:\\users\\dell\\desktop\\inventory-copy\\inventory\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5AEAEB71-D0B0-45B9-BCBB-6F32140D64EF}|Inventory\\Inventory.csproj|solutionrelative:inventory\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5AEAEB71-D0B0-45B9-BCBB-6F32140D64EF}|Inventory\\Inventory.csproj|c:\\users\\dell\\desktop\\inventory-copy\\inventory\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{5AEAEB71-D0B0-45B9-BCBB-6F32140D64EF}|Inventory\\Inventory.csproj|solutionrelative:inventory\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5AEAEB71-D0B0-45B9-BCBB-6F32140D64EF}|Inventory\\Inventory.csproj|c:\\users\\dell\\desktop\\inventory-copy\\inventory\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{5AEAEB71-D0B0-45B9-BCBB-6F32140D64EF}|Inventory\\Inventory.csproj|solutionrelative:inventory\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5AEAEB71-D0B0-45B9-BCBB-6F32140D64EF}|Inventory\\Inventory.csproj|c:\\users\\dell\\desktop\\inventory-copy\\inventory\\wwwroot\\favicon.ico||{177559E0-D141-11D0-92DF-00A0C9138C45}",
+      "RelativeMoniker": "D:0:0:{5AEAEB71-D0B0-45B9-BCBB-6F32140D64EF}|Inventory\\Inventory.csproj|solutionrelative:inventory\\wwwroot\\favicon.ico||{177559E0-D141-11D0-92DF-00A0C9138C45}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5AEAEB71-D0B0-45B9-BCBB-6F32140D64EF}|Inventory\\Inventory.csproj|c:\\users\\dell\\desktop\\inventory-copy\\inventory\\areas\\identity\\pages\\admin\\dashboard.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5AEAEB71-D0B0-45B9-BCBB-6F32140D64EF}|Inventory\\Inventory.csproj|solutionrelative:inventory\\areas\\identity\\pages\\admin\\dashboard.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5AEAEB71-D0B0-45B9-BCBB-6F32140D64EF}|Inventory\\Inventory.csproj|c:\\users\\dell\\desktop\\inventory-copy\\inventory\\areas\\identity\\pages\\admin\\dashboard.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{5AEAEB71-D0B0-45B9-BCBB-6F32140D64EF}|Inventory\\Inventory.csproj|solutionrelative:inventory\\areas\\identity\\pages\\admin\\dashboard.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5AEAEB71-D0B0-45B9-BCBB-6F32140D64EF}|Inventory\\Inventory.csproj|c:\\users\\dell\\desktop\\inventory-copy\\inventory\\wwwroot\\css\\dashboard.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{5AEAEB71-D0B0-45B9-BCBB-6F32140D64EF}|Inventory\\Inventory.csproj|solutionrelative:inventory\\wwwroot\\css\\dashboard.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{74946827-37a0-11d2-a273-00c04f8ef4ff}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\Dell\\Desktop\\Inventory-copy\\Inventory\\appsettings.json",
+              "RelativeDocumentMoniker": "Inventory\\appsettings.json",
+              "ToolTip": "C:\\Users\\Dell\\Desktop\\Inventory-copy\\Inventory\\appsettings.json",
+              "RelativeToolTip": "Inventory\\appsettings.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAEAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-02-28T02:07:55.487Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\Dell\\Desktop\\Inventory-copy\\Inventory\\Views\\Home\\Index.cshtml",
+              "RelativeDocumentMoniker": "Inventory\\Views\\Home\\Index.cshtml",
+              "ToolTip": "C:\\Users\\Dell\\Desktop\\Inventory-copy\\Inventory\\Views\\Home\\Index.cshtml",
+              "RelativeToolTip": "Inventory\\Views\\Home\\Index.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAcAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-02-10T02:50:18.512Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "appsettings.Development.json",
+              "DocumentMoniker": "C:\\Users\\Dell\\Desktop\\Inventory-copy\\Inventory\\appsettings.Development.json",
+              "RelativeDocumentMoniker": "Inventory\\appsettings.Development.json",
+              "ToolTip": "C:\\Users\\Dell\\Desktop\\Inventory-copy\\Inventory\\appsettings.Development.json",
+              "RelativeToolTip": "Inventory\\appsettings.Development.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-02-28T02:06:07.668Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Dell\\Desktop\\Inventory-copy\\Inventory\\Program.cs",
+              "RelativeDocumentMoniker": "Inventory\\Program.cs",
+              "ToolTip": "C:\\Users\\Dell\\Desktop\\Inventory-copy\\Inventory\\Program.cs",
+              "RelativeToolTip": "Inventory\\Program.cs",
+              "ViewState": "AQIAAFIAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-28T02:06:14.485Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "favicon.ico - Icon [32x32, 32 bit, BMP]",
+              "DocumentMoniker": "C:\\Users\\Dell\\Desktop\\Inventory-copy\\Inventory\\wwwroot\\favicon.ico",
+              "RelativeDocumentMoniker": "Inventory\\wwwroot\\favicon.ico",
+              "ToolTip": "C:\\Users\\Dell\\Desktop\\Inventory-copy\\Inventory\\wwwroot\\favicon.ico - Icon [32x32, 32 bit, BMP]",
+              "RelativeToolTip": "Inventory\\wwwroot\\favicon.ico - Icon [32x32, 32 bit, BMP]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001525|",
+              "WhenOpened": "2025-02-10T02:49:56.039Z",
+              "EditorCaption": " - Icon [32x32, 32 bit, BMP]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Dashboard.cshtml.cs",
+              "DocumentMoniker": "C:\\Users\\Dell\\Desktop\\Inventory-copy\\Inventory\\Areas\\Identity\\Pages\\Admin\\Dashboard.cshtml.cs",
+              "RelativeDocumentMoniker": "Inventory\\Areas\\Identity\\Pages\\Admin\\Dashboard.cshtml.cs",
+              "ToolTip": "C:\\Users\\Dell\\Desktop\\Inventory-copy\\Inventory\\Areas\\Identity\\Pages\\Admin\\Dashboard.cshtml.cs",
+              "RelativeToolTip": "Inventory\\Areas\\Identity\\Pages\\Admin\\Dashboard.cshtml.cs",
+              "ViewState": "AQIAAGMAAAAAAAAAAAAAAGgAAAAuAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-20T09:36:04.393Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Dashboard.cshtml",
+              "DocumentMoniker": "C:\\Users\\Dell\\Desktop\\Inventory-copy\\Inventory\\Areas\\Identity\\Pages\\Admin\\Dashboard.cshtml",
+              "RelativeDocumentMoniker": "Inventory\\Areas\\Identity\\Pages\\Admin\\Dashboard.cshtml",
+              "ToolTip": "C:\\Users\\Dell\\Desktop\\Inventory-copy\\Inventory\\Areas\\Identity\\Pages\\Admin\\Dashboard.cshtml",
+              "RelativeToolTip": "Inventory\\Areas\\Identity\\Pages\\Admin\\Dashboard.cshtml",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-08-20T09:20:34.751Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "dashboard.css",
+              "DocumentMoniker": "C:\\Users\\Dell\\Desktop\\Inventory-copy\\Inventory\\wwwroot\\css\\dashboard.css",
+              "RelativeDocumentMoniker": "Inventory\\wwwroot\\css\\dashboard.css",
+              "ToolTip": "C:\\Users\\Dell\\Desktop\\Inventory-copy\\Inventory\\wwwroot\\css\\dashboard.css",
+              "RelativeToolTip": "Inventory\\wwwroot\\css\\dashboard.css",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAFoAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2024-08-20T06:26:06.923Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
