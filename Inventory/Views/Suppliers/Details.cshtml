@@ -1,0 +1,80 @@
+﻿@model Inventory.Models.Supplier
+
+@{
+    ViewData["Title"] = "Supplier Details";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<div class="table-container">
+    <table class="table table-bordered">
+        <tbody>
+            <tr>
+                <th>Name</th>
+                <td>@Model.Name</td>
+            </tr>
+            <tr>
+                <th>Contact Info</th>
+                <td>@Model.ContactInfo</td>
+            </tr>
+            <tr>
+                <th>Products</th>
+                <td>
+                    @if (Model.Products != null && Model.Products.Any())
+                    {
+                        <ul>
+                            @foreach (var product in Model.Products)
+                            {
+                                <li>
+                                    @product.Name
+                                    <br />
+                                    <small>Category: @product.Category?.Name</small>
+                                </li>
+                            }
+                        </ul>
+                    }
+                    else
+                    {
+                        <span>No products available</span>
+                    }
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <a asp-action="Index" class="custom-link">Back to List</a>
+</div>
+
+<style>
+    h1 {
+        margin-top: 80px;
+        text-align: center;
+    }
+
+    .table-container {
+        position: relative;
+        max-width: 600px;
+        margin: 0 auto;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .table th, .table td {
+        vertical-align: middle;
+        text-align: center;
+    }
+
+    .custom-link {
+        display: block;
+        text-align: end;
+        margin-top: 20px;
+        color: #0E9BA8;
+        text-decoration: none;
+    }
+
+        .custom-link:hover {
+            color: #0C8B97;
+            text-decoration: underline;
+        }
+</style>

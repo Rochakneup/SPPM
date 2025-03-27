@@ -1,0 +1,86 @@
+﻿@page
+@model LoginModel
+@{
+    Layout = "/Views/Shared/_CustomLayout.cshtml";
+}
+
+<h1 class="visually-hidden">@ViewData["Title"]</h1>
+<div class="login-background">
+    <div class="login-container">
+        <div class="login-form">
+            <div class="login-title-container">
+                <img src="/assets/logo.png" alt="Logo" class="login-logo" />
+                <h2 class="login-title">Login</h2>
+            </div>
+            <form id="account" method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger mb-3" role="alert"></div>
+                <div class="form-group mb-3">
+                    <label for="email">Email</label>
+                    <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" placeholder="Email" id="email" />
+                    <span asp-validation-for="Input.Email" class="text-danger"></span>
+                </div>
+                <div class="form-group mb-3">
+                    <label for="password">Password</label>
+                    <div class="input-group">
+                        <input asp-for="Input.Password" class="form-control" autocomplete="current-password" aria-required="true" placeholder="Password" id="password" />
+                        <button type="button" class="btn" id="togglePassword">
+                            <i class="ri-eye-line"></i>
+                        </button>
+                    </div>
+                    <span asp-validation-for="Input.Password" class="text-danger"></span>
+                </div>
+                <div>
+                    <button id="login-submit" type="submit" class="btn btn-primary">Login</button>
+                </div>
+            </form>
+            <p>Or </p>
+            <hr />
+
+            <form id="external-account" asp-page="./ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" method="post" class="form-horizontal">
+                <div class="d-grid gap-2">
+                    @foreach (var provider in Model.ExternalLogins!)
+                    {
+                        <button type="submit" class="btn btn-outline-primary d-flex align-items-center justify-content-center mb-2" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">
+                            <img src="/assets/google.png" alt="Google logo" class="me-2" style="width: 20px; height: 20px;" />
+                            @provider.DisplayName
+                        </button>
+                    }
+                </div>
+            </form>
+            <div class="text-center mt-4">
+                <p>New member? <a class="nav-link-inline" asp-area="Identity" asp-page="/Account/Register">Register here</a></p>
+            </div>
+        </div>
+        <div class="login-illustration">
+            <img src="/assets/inven.jpg" alt="Illustration" style="height:300px" />
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const togglePassword = document.querySelector("#togglePassword");
+            const password = document.querySelector("#password");
+
+            togglePassword.addEventListener("click", function (e) {
+                const type = password.getAttribute("type") === "password" ? "text" : "password";
+                password.setAttribute("type", type);
+
+                const icon = this.querySelector("i");
+                if (type === "text") {
+                    icon.classList.remove("ri-eye-line");
+                    icon.classList.add("ri-eye-off-line");
+                } else {
+                    icon.classList.remove("ri-eye-off-line");
+                    icon.classList.add("ri-eye-line");
+                }
+            });
+        });
+    </script>
+}
+
+
+
+<link href="https://cdn.jsdelivr.net/npm/remixicon/fonts/remixicon.css" rel="stylesheet">
